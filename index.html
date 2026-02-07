@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Rose Garden for Aditi 🌹</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Dancing Script', cursive;
+        height: 100vh;
+        width: 100%;
+        background: #000;
+        color: #fff;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        transition: transform 1s ease, opacity 1s ease;
+        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(139, 0, 0, 0.3));
+      }
+
+      .hero.hidden {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 40px;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 3px solid rgba(255, 77, 141, 0.4);
+        animation: fadeInUp 2s ease-out;
+      }
+
+      .welcome-title {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5rem;
+        color: #ff4d8d;
+        text-shadow: 0 0 30px rgba(255, 77, 141, 0.9);
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .welcome-subtitle {
+        font-size: 2.5rem;
+        color: #ffb6d5;
+        margin-bottom: 40px;
+        line-height: 1.4;
+      }
+
+      .enter-btn {
+        font-family: 'Dancing Script', cursive;
+        font-size: 2.2rem;
+        color: white;
+        background: linear-gradient(45deg, #ff4d8d, #ff0066);
+        border: none;
+        padding: 15px 40px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 30px rgba(255, 0, 102, 0.5);
+        margin-top: 30px;
+        animation: pulse 2s infinite;
+      }
+
+      .enter-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(255, 0, 102, 0.8);
+        letter-spacing: 2px;
+      }
+
+      /* Main Content */
+      .main-content {
+        position: relative;
+        width: 100%;
+      }
+
+      /* Section Styling */
+      .section {
+        min-height: 100vh;
+        padding: 80px 20px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 1s ease, transform 1s ease;
+      }
+
+      .section.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Avatar Section */
+      #avatar-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(120, 0, 40, 0.5)), 
+                    url('https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .avatar-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 50px;
+        margin-top: 50px;
+        position: relative;
+        height: 400px;
+      }
+
+      .boy-avatar {
+        width: 200px;
+        height: 300px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .girl-avatar {
+        width: 220px;
+        height: 320px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .boy-body, .girl-body {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .boy-head {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 80px;
+        background: #f5d0a9;
+        border-radius: 50%;
+        box-shadow: inset 0 -5px 0 rgba(0,0,0,0.1);
+      }
+
+      .boy-hair {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90px;
+        height: 40px;
+        background: #3a2718;
+        border-radius: 50% 50% 0 0;
+      }
+
+      .boy-body-shape {
+        position: absolute;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 180px;
+        background: #4a86e8;
+        border-radius: 50px 50px 0 0;
+      }
+
+      .boy-legs {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 80px;
+        display: flex;
+        gap: 20px;
+      }
+
+      .leg {
+        width: 25px;
+        height: 80px;
+        background: #2e5cb8;
+        border-radius: 10px;
+      }
+
+      .girl-head {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90px;
+        height: 90px;
+        background: #f5d0a9;
+        border-radius: 50%;
+        box-shadow: inset 0 -5px 0 rgba(0,0,0,0.1);
+      }
+
+      .girl-hair {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 110px;
+        height: 60px;
+        background: #8b4513;
+        border-radius: 50% 50% 0 0;
+      }
+
+      .girl-body-shape {
+        position: absolute;
+        top: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 200px;
+        background: #ff69b4;
+        border-radius: 60px 60px 0 0;
+      }
+
+      .girl-legs {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 80px;
+        display: flex;
+        gap: 30px;
+      }
+
+      .girl-leg {
+        width: 30px;
+        height: 80px;
+        background: #d1478c;
+        border-radius: 15px;
+      }
+
+      .rose-animation {
+        position: absolute;
+        top: 150px;
+        left: 180px;
+        width: 60px;
+        height: 60px;
+        z-index: 3;
+        animation: giveRose 3s ease-in-out infinite;
+      }
+
+      .rose {
+        font-size: 4rem;
+        color: #ff4d8d;
+        filter: drop-shadow(0 0 10px rgba(255, 77, 141, 0.8));
+      }
+
+      .heart-bubble {
+        position: absolute;
+        top: 50px;
+        right: -40px;
+        width: 80px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: floatHeart 4s ease-in-out infinite;
+      }
+
+      .heart-bubble::before {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 20px;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 15px solid rgba(255, 255, 255, 0.9);
+      }
+
+      .heart-bubble span {
+        font-size: 2rem;
+        color: #ff4d8d;
+      }
+
+      /* Rose Bouquet Section */
+      #bouquet-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(100, 0, 50, 0.4)), 
+                    url('https://images.unsplash.com/photo-1519378058457-4c30a409c8e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .bouquet-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 20px;
+      }
+
+      .rose-card {
+        width: 250px;
+        height: 320px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        border: 2px solid transparent;
+        backdrop-filter: blur(5px);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .rose-card:hover {
+        transform: translateY(-15px) scale(1.05);
+        border-color: #ff4d8d;
+        box-shadow: 0 0 40px rgba(255, 77, 141, 0.6);
+      }
+
+      .rose-icon {
+        font-size: 5rem;
+        margin-bottom: 20px;
+        transition: all 0.4s ease;
+      }
+
+      .rose-title {
+        font-size: 2rem;
+        color: #fff;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .rose-message {
+        font-size: 1.5rem;
+        color: #ffb6d5;
+        text-align: center;
+        opacity: 0;
+        max-height: 0;
+        transition: all 0.5s ease;
+      }
+
+      .rose-card.active .rose-message {
+        opacity: 1;
+        max-height: 200px;
+        margin-top: 15px;
+      }
+
+      .rose-card.active .rose-icon {
+        transform: scale(1.2);
+      }
+
+      /* Message Section */
+      #message-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(80, 0, 30, 0.5)), 
+                    url('https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .message-container {
+        max-width: 900px;
+        background: rgba(0, 0, 0, 0.85);
+        border-radius: 20px;
+        padding: 40px;
+        border: 2px solid rgba(255, 77, 141, 0.4);
+        box-shadow: 0 0 50px rgba(255, 0, 102, 0.3);
+        backdrop-filter: blur(10px);
+        position: relative;
+      }
+
+      .message-content {
+        font-size: 1.8rem;
+        line-height: 1.8;
+        color: #ffddee;
+        max-height: 60vh;
+        overflow-y: auto;
+        padding-right: 20px;
+      }
+
+      .message-content span {
+        color: #ff4d8d;
+        font-weight: bold;
+        font-size: 2rem;
+      }
+
+      .signature {
+        font-family: 'Great Vibes', cursive;
+        font-size: 3rem;
+        color: #ffb6d5;
+        text-align: right;
+        margin-top: 40px;
+        text-shadow: 0 0 15px rgba(255, 182, 213, 0.5);
+      }
+
+      /* Memories Section with Dates */
+      #memories-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(120, 0, 40, 0.5)), 
+                    url('https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .memories-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 20px;
+      }
+
+      .memory-card {
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 15px;
+        padding: 25px;
+        border: 2px solid transparent;
+        transition: all 0.4s ease;
+        backdrop-filter: blur(5px);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .memory-card:hover {
+        border-color: #ff4d8d;
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(255, 77, 141, 0.4);
+      }
+
+      .memory-date {
+        font-size: 1.6rem;
+        color: #ff4d8d;
+        margin-bottom: 15px;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(255, 77, 141, 0.5);
+      }
+
+      .memory-text {
+        font-size: 1.8rem;
+        color: #ffddee;
+        line-height: 1.5;
+      }
+
+      .memory-icon {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+        color: rgba(255, 77, 141, 0.3);
+      }
+
+      /* Surprise Section */
+      #surprise-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(139, 0, 0, 0.4)), 
+                    url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .surprise-container {
+        max-width: 800px;
+        padding: 40px;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 20px;
+        border: 2px solid rgba(255, 77, 141, 0.4);
+      }
+
+      .smile-btn {
+        font-family: 'Great Vibes', cursive;
+        font-size: 3.5rem;
+        color: white;
+        background: linear-gradient(45deg, #ff0066, #ff4d8d);
+        border: none;
+        padding: 20px 60px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 40px rgba(255, 0, 102, 0.5);
+        margin: 40px 0;
+        animation: pulse 2s infinite;
+      }
+
+      .smile-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 60px rgba(255, 0, 102, 0.8);
+      }
+
+      .surprise-message {
+        font-size: 2.5rem;
+        color: #ffb6d5;
+        margin-top: 30px;
+        opacity: 0;
+        transition: opacity 1s ease;
+        min-height: 80px;
+      }
+
+      .surprise-message.show {
+        opacity: 1;
+      }
+
+      /* Ending Section - FIXED */
+      #ending-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(100, 0, 50, 0.5)), 
+                    url('https://images.unsplash.com/photo-1519378058457-4c30a409c8e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .ending-content {
+        max-width: 800px;
+        padding: 50px;
+        background: rgba(0, 0, 0, 0.85);
+        border-radius: 25px;
+        border: 3px solid rgba(255, 77, 141, 0.4);
+        text-align: center;
+      }
+
+      .final-message {
+        font-size: 2.8rem;
+        color: #ffddee;
+        margin-bottom: 40px;
+        line-height: 1.6;
+      }
+
+      .rose-bouquet-img {
+        width: 350px;
+        height: 350px;
+        border-radius: 20px;
+        margin: 40px auto;
+        overflow: hidden;
+        border: 3px solid #ff4d8d;
+        box-shadow: 0 0 50px rgba(255, 77, 141, 0.5);
+        animation: floatUpDown 3s ease-in-out infinite;
+      }
+
+      .rose-bouquet-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .rose-bouquet-img:hover img {
+        transform: scale(1.05);
+      }
+
+      .final-signature {
+        font-family: 'Great Vibes', cursive;
+        font-size: 3.5rem;
+        color: #ffb6d5;
+        margin-top: 40px;
+        text-shadow: 0 0 25px rgba(255, 182, 213, 0.5);
+      }
+
+      /* Page Title */
+      .section-title {
+        font-family: 'Great Vibes', cursive;
+        font-size: 4rem;
+        color: #ff4d8d;
+        text-align: center;
+        margin-bottom: 40px;
+        text-shadow: 0 0 20px rgba(255, 77, 141, 0.7);
+      }
+
+      /* Scroll Down Indicator */
+      .scroll-indicator {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+      }
+
+      .scroll-text {
+        font-size: 1.5rem;
+        color: #ffb6d5;
+        margin-bottom: 10px;
+        font-family: 'Dancing Script', cursive;
+      }
+
+      .scroll-arrow {
+        width: 30px;
+        height: 30px;
+        border-right: 3px solid #ff4d8d;
+        border-bottom: 3px solid #ff4d8d;
+        transform: rotate(45deg);
+        animation: bounce 2s infinite;
+      }
+
+      /* Music Player */
+      .music-player {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 50px;
+        padding: 12px 25px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        z-index: 2000;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 77, 141, 0.4);
+      }
+
+      .music-btn {
+        background: transparent;
+        border: none;
+        color: #ff4d8d;
+        font-size: 1.8rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .music-btn:hover {
+        color: #ffb6d5;
+        transform: scale(1.1);
+      }
+
+      .music-text {
+        color: #ffb6d5;
+        font-size: 1.2rem;
+        font-family: 'Dancing Script', cursive;
+      }
+
+      .music-placeholder {
+        width: 100px;
+        height: 20px;
+        background: rgba(255, 77, 141, 0.2);
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .music-wave {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, #ff4d8d, transparent);
+        animation: wave 2s linear infinite;
+      }
+
+      /* Petals Animation */
+      .petals {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .petal {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: linear-gradient(45deg, #ff4d8d, #ff0066);
+        border-radius: 50% 0 50% 50%;
+        transform: rotate(45deg);
+        opacity: 0.7;
+        animation: falling linear infinite;
+      }
+
+      /* Hearts Animation */
+      .hearts {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .heart {
+        position: absolute;
+        color: rgba(255, 0, 85, 0.7);
+        font-size: 20px;
+        animation: float linear infinite;
+        opacity: 0;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(50px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+
+      @keyframes falling {
+        0% { transform: translateY(-100px) rotate(0deg); opacity: 0.7; }
+        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+      }
+
+      @keyframes float {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 0.7; }
+        100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+      }
+
+      @keyframes giveRose {
+        0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+        50% { transform: translateX(-60px) translateY(-20px) rotate(-20deg); }
+      }
+
+      @keyframes floatHeart {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-20px) scale(1.1); }
+      }
+
+      @keyframes floatUpDown {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+      }
+
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0) rotate(45deg); }
+        50% { transform: translateY(10px) rotate(45deg); }
+      }
+
+      @keyframes wave {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .welcome-title { font-size: 3.5rem; }
+        .welcome-subtitle { font-size: 2rem; }
+        .section-title { font-size: 3rem; }
+        .enter-btn, .smile-btn { font-size: 1.8rem; padding: 12px 30px; }
+        .message-content { font-size: 1.5rem; }
+        .signature { font-size: 2.5rem; }
+        .final-message { font-size: 2.2rem; }
+        .music-player { padding: 10px 20px; }
+        .bouquet-container, .memories-container { gap: 20px; }
+        .rose-card { width: 220px; height: 300px; }
+        .avatar-container { gap: 20px; height: 300px; }
+        .boy-avatar { width: 150px; height: 250px; }
+        .girl-avatar { width: 170px; height: 270px; }
+        .rose-bouquet-img { width: 280px; height: 280px; }
+      }
+
+      @media (max-width: 480px) {
+        .welcome-title { font-size: 2.8rem; }
+        .section-title { font-size: 2.5rem; }
+        .enter-btn, .smile-btn { font-size: 1.5rem; padding: 10px 25px; }
+        .message-content { font-size: 1.3rem; }
+        .rose-card { width: 100%; max-width: 280px; }
+        .memories-container { grid-template-columns: 1fr; }
+        .avatar-container { flex-direction: column; align-items: center; height: 500px; }
+        .music-player { top: 10px; right: 10px; padding: 8px 15px; }
+        .rose-bouquet-img { width: 250px; height: 250px; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <div class="hero" id="hero">
+      <div class="petals" id="petals-container"></div>
+      <div class="hero-content">
+        <h1 class="welcome-title">Happy Rose Day, Aditi 🌹</h1>
+        <p class="welcome-subtitle">I couldn't give you roses in person, so I made a garden just for you.</p>
+        <button class="enter-btn" id="enter-garden">Enter Your Garden 💖</button>
+      </div>
+      <div class="scroll-indicator" id="scroll-indicator">
+        <div class="scroll-text">Scroll Down</div>
+        <div class="scroll-arrow"></div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+      <!-- Avatar Section -->
+      <section class="section" id="avatar-section">
+        <h2 class="section-title">You & Me 💑</h2>
+        <div class="avatar-container">
+          <!-- Boy Avatar -->
+          <div class="boy-avatar">
+            <div class="boy-body">
+              <div class="boy-head">
+                <div class="boy-hair"></div>
+                <!-- Eyes -->
+                <div style="position: absolute; top: 30px; left: 20px; width: 15px; height: 15px; background: #fff; border-radius: 50%;"></div>
+                <div style="position: absolute; top: 30px; right: 20px; width: 15px; height: 15px; background: #fff; border-radius: 50%;"></div>
+                <!-- Pupils -->
+                <div style="position: absolute; top: 33px; left: 23px; width: 8px; height: 8px; background: #000; border-radius: 50%;"></div>
+                <div style="position: absolute; top: 33px; right: 23px; width: 8px; height: 8px; background: #000; border-radius: 50%;"></div>
+                <!-- Smile -->
+                <div style="position: absolute; bottom: 15px; left: 25px; width: 30px; height: 10px; border-bottom: 3px solid #000; border-radius: 0 0 15px 15px;"></div>
+              </div>
+              <div class="boy-body-shape"></div>
+              <div class="boy-legs">
+                <div class="leg"></div>
+                <div class="leg"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rose Animation -->
+          <div class="rose-animation">
+            <div class="rose">🌹</div>
+            <div class="heart-bubble">
+              <span>❤️</span>
+            </div>
+          </div>
+
+          <!-- Girl Avatar -->
+          <div class="girl-avatar">
+            <div class="girl-body">
+              <div class="girl-head">
+                <div class="girl-hair"></div>
+                <!-- Eyes -->
+                <div style="position: absolute; top: 35px; left: 25px; width: 15px; height: 15px; background: #fff; border-radius: 50%;"></div>
+                <div style="position: absolute; top: 35px; right: 25px; width: 15px; height: 15px; background: #fff; border-radius: 50%;"></div>
+                <!-- Pupils -->
+                <div style="position: absolute; top: 38px; left: 28px; width: 8px; height: 8px; background: #000; border-radius: 50%;"></div>
+                <div style="position: absolute; top: 38px; right: 28px; width: 8px; height: 8px; background: #000; border-radius: 50%;"></div>
+                <!-- Smile -->
+                <div style="position: absolute; bottom: 15px; left: 30px; width: 30px; height: 10px; border-bottom: 3px solid #000; border-radius: 0 0 15px 15px;"></div>
+                <!-- Blush -->
+                <div style="position: absolute; top: 45px; left: 15px; width: 15px; height: 5px; background: #ffb6c1; border-radius: 50%; opacity: 0.6;"></div>
+                <div style="position: absolute; top: 45px; right: 15px; width: 15px; height: 5px; background: #ffb6c1; border-radius: 50%; opacity: 0.6;"></div>
+              </div>
+              <div class="girl-body-shape"></div>
+              <div class="girl-legs">
+                <div class="girl-leg"></div>
+                <div class="girl-leg"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size: 2rem; color: #ffddee; margin-top: 40px; text-align: center;">
+          Every day I wish I could give you roses in person, my love 💖
+        </p>
+      </section>
+
+      <!-- Rose Bouquet Section -->
+      <section class="section" id="bouquet-section">
+        <h2 class="section-title">Your Virtual Rose Bouquet 🌹</h2>
+        <div class="bouquet-container">
+          <div class="rose-card" data-rose="red">
+            <div class="rose-icon">🌹</div>
+            <h3 class="rose-title">Red Rose</h3>
+            <p class="rose-message">This rose represents my endless love for you - passionate, deep, and forever growing.</p>
+          </div>
+          
+          <div class="rose-card" data-rose="pink">
+            <div class="rose-icon">💗</div>
+            <h3 class="rose-title">Pink Rose</h3>
+            <p class="rose-message">This rose is for my gratitude - thank you for being the most beautiful part of my life.</p>
+          </div>
+          
+          <div class="rose-card" data-rose="white">
+            <div class="rose-icon">🤍</div>
+            <h3 class="rose-title">White Rose</h3>
+            <p class="rose-message">This rose symbolizes the peace you bring to my life - pure, calming, and precious.</p>
+          </div>
+          
+          <div class="rose-card" data-rose="yellow">
+            <div class="rose-icon">💛</div>
+            <h3 class="rose-title">Yellow Rose</h3>
+            <p class="rose-message">This rose is for your friendship and support - the sunshine that brightens my darkest days.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Message Section -->
+      <section class="section" id="message-section">
+        <h2 class="section-title">For You, My Love 💌</h2>
+        <div class="message-container">
+          <div class="message-content">
+            <p><span>Aditi,</span><br><br>
+            Happy Rose Day, my love 🌹<br><br>
+            I know I couldn't be there with you today to give you roses in person, and honestly, that's the only thing I wish I could change right now. But I didn't want this day to pass like any other day… because you are not someone ordinary in my life. You are the most special part of it.<br><br>
+            So today, instead of a single rose, I made this small garden for you — a place where every rose carries a feeling, every color carries a memory, and every word carries a piece of my heart.<br><br>
+            Aditi, you came into my life quietly, but you changed everything. Before you, things felt normal… but after you, everything started feeling peaceful, meaningful, and real. You didn't just become someone I love — you became my comfort, my calm, my safe place.<br><br>
+            With you, I don't have to pretend to be strong. With you, I don't have to hide my feelings. With you, I feel understood, accepted, and cared for in a way I never experienced before.<br><br>
+            The peace you bring into my life is something I can't explain in words. Even on my worst days, just talking to you makes everything feel lighter. Your presence itself feels like home to me.<br><br>
+            I know your past wasn't easy. I know you went through pain, pressure, and things you never deserved. And maybe that's why I want to give you something very simple but very real — peace, trust, and a love that never feels heavy or suffocating.<br><br>
+            I don't want to control your life.<br>
+            I don't want to become a burden on your heart.<br>
+            I just want to be the person with whom you always feel safe, free, and happy.<br><br>
+            Aditi, my love for you isn't loud or dramatic. It's calm. It's patient. It's the kind of love that stays, understands, and grows stronger every day.<br><br>
+            Today, this website is just a small effort… but every line here, every rose here, every second I spent making this — it was all for you. Because you deserve effort. You deserve to feel special. You deserve to know that someone truly values you.<br><br>
+            If I could, I would give you a garden full of real roses.<br>
+            But honestly… even a garden wouldn't be enough for the place you hold in my life.<br><br>
+            You are my peace.<br>
+            You are my happiness.<br>
+            You are the best thing that ever happened to me.<br><br>
+            And this is just a promise from my heart —<br>
+            One day, I'll give you real roses… and on that day, I'll remind you again how lucky I am to have you in my life.<br><br>
+            Until then, this little garden is yours forever.<br><br>
+            Happy Rose Day, my Aditi 🌹❤️</p>
+          </div>
+          <div class="signature">
+            Always yours,<br>
+            Balaaa
+          </div>
+        </div>
+      </section>
+
+      <!-- Memories Section with Dates -->
+      <section class="section" id="memories-section">
+        <h2 class="section-title">Our Special Dates 📅</h2>
+        <div class="memories-container">
+          <div class="memory-card">
+            <div class="memory-date">14 November</div>
+            <div class="memory-text">The day we chose understanding after that fight</div>
+            <div class="memory-icon">🤝</div>
+          </div>
+          
+          <div class="memory-card">
+            <div class="memory-date">24 November</div>
+            <div class="memory-text">The day you became free from everything!</div>
+            <div class="memory-icon">🕊️</div>
+          </div>
+          
+          <div class="memory-card">
+            <div class="memory-date">28 November</div>
+            <div class="memory-text">Our first kiss <3</div>
+            <div class="memory-icon">💋</div>
+          </div>
+          
+          <div class="memory-card">
+            <div class="memory-date">14 December</div>
+            <div class="memory-text">The day we became us and made it official</div>
+            <div class="memory-icon">💍</div>
+          </div>
+          
+          <div class="memory-card">
+            <div class="memory-date">Every Day</div>
+            <div class="memory-text">The peace you bring into my life</div>
+            <div class="memory-icon">☮️</div>
+          </div>
+          
+          <div class="memory-card">
+            <div class="memory-date">Always</div>
+            <div class="memory-text">Your smile that makes everything better</div>
+            <div class="memory-icon">😊</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Surprise Section -->
+      <section class="section" id="surprise-section">
+        <h2 class="section-title">A Little Surprise 🎁</h2>
+        <div class="surprise-container">
+          <p style="font-size: 2rem; color: #ffddee; margin-bottom: 30px; text-align: center;">
+            Click the button if you're smiling...
+          </p>
+          
+          <button class="smile-btn" id="smile-btn">😊 Click Me! 😊</button>
+          
+          <div class="surprise-message" id="surprise-message"></div>
+        </div>
+      </section>
+
+      <!-- Ending Section - FIXED -->
+      <section class="section" id="ending-section">
+        <h2 class="section-title">Forever Yours 🌹</h2>
+        <div class="ending-content">
+          <p class="final-message">
+            "I'll give you real roses soon… but till then, this garden is yours forever 🌹"
+          </p>
+          
+          <!-- Red Rose Bouquet Image -->
+          <div class="rose-bouquet-img">
+            <img src="https://i.pinimg.com/736x/09/4e/a8/094ea8a926ee892fcab8d109ecb99469.jpg" 
+                 alt="Beautiful Red Rose Bouquet">
+          </div>
+          
+          <div class="final-signature">
+            With all my love,<br>
+            Balaaa 💖
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player">
+      <button class="music-btn" id="play-btn">
+        <i class="fas fa-play"></i>
+      </button>
+      <span class="music-text">Love Song</span>
+      <div class="music-placeholder">
+        <div class="music-wave"></div>
+      </div>
+      <audio id="bg-music" loop>
+        <!-- Romantic instrumental music -->
+        <source src="Tu Hi Meri Shab Hai Gangster 320 Kbps.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <!-- Hearts Animation -->
+    <div class="hearts" id="hearts-container"></div>
+
+    <script>
+      // Initialize variables
+      const hero = document.getElementById('hero');
+      const enterBtn = document.getElementById('enter-garden');
+      const sections = document.querySelectorAll('.section');
+      const scrollIndicator = document.getElementById('scroll-indicator');
+      let currentSection = 0;
+      let isHeroHidden = false;
+
+      // Show hero section
+      function showHero() {
+        hero.classList.remove('hidden');
+        isHeroHidden = false;
+        scrollIndicator.style.display = 'flex';
+        
+        // Hide all sections
+        sections.forEach(section => {
+          section.classList.remove('active');
+        });
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Hide hero and show sections
+      function hideHero() {
+        hero.classList.add('hidden');
+        scrollIndicator.style.display = 'none';
+        isHeroHidden = true;
+        
+        // Show first section
+        sections[0].classList.add('active');
+        
+        // Create petals
+        createPetals();
+        
+        // Scroll to first section
+        setTimeout(() => {
+          sections[0].scrollIntoView({ behavior: 'smooth' });
+        }, 500);
+      }
+
+      // Enter garden button
+      enterBtn.addEventListener('click', () => {
+        hideHero();
+      });
+
+      // Create falling petals
+      function createPetals() {
+        const container = document.getElementById('petals-container');
+        container.innerHTML = '';
+        const petalCount = 30;
+        
+        for (let i = 0; i < petalCount; i++) {
+          const petal = document.createElement('div');
+          petal.classList.add('petal');
+          
+          // Random properties
+          const left = Math.random() * 100;
+          const size = Math.random() * 15 + 10;
+          const duration = Math.random() * 10 + 10;
+          const delay = Math.random() * 5;
+          const color = `hsl(${Math.random() * 20 + 340}, 100%, 65%)`;
+          
+          petal.style.left = `${left}vw`;
+          petal.style.width = `${size}px`;
+          petal.style.height = `${size}px`;
+          petal.style.background = color;
+          petal.style.animationDelay = `${delay}s`;
+          petal.style.animationDuration = `${duration}s`;
+          
+          container.appendChild(petal);
+        }
+      }
+
+      // Create floating hearts
+      function createHearts() {
+        const container = document.getElementById('hearts-container');
+        const heartCount = 20;
+        
+        for (let i = 0; i < heartCount; i++) {
+          const heart = document.createElement('div');
+          heart.classList.add('heart');
+          heart.innerHTML = '❤';
+          
+          // Random properties
+          const left = Math.random() * 100;
+          const size = Math.random() * 20 + 15;
+          const duration = Math.random() * 15 + 15;
+          const delay = Math.random() * 10;
+          
+          heart.style.left = `${left}vw`;
+          heart.style.fontSize = `${size}px`;
+          heart.style.animationDelay = `${delay}s`;
+          heart.style.animationDuration = `${duration}s`;
+          
+          container.appendChild(heart);
+        }
+      }
+
+      // Rose cards interaction
+      const roseCards = document.querySelectorAll('.rose-card');
+      roseCards.forEach(card => {
+        card.addEventListener('click', () => {
+          // Toggle active state
+          const isActive = card.classList.contains('active');
+          
+          // Close all other cards
+          roseCards.forEach(c => {
+            c.classList.remove('active');
+          });
+          
+          // Open clicked card if it wasn't active
+          if (!isActive) {
+            card.classList.add('active');
+            
+            // Play a gentle sound
+            const clickSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3');
+            clickSound.volume = 0.3;
+            clickSound.play();
+          }
+        });
+      });
+
+      // Smile button surprise
+      const smileBtn = document.getElementById('smile-btn');
+      const surpriseMessage = document.getElementById('surprise-message');
+      const messages = [
+        "Your smile is my favorite thing in the world ❤️",
+        "Seeing you smile makes my day complete! 😊",
+        "That beautiful smile could light up the darkest night 🌟",
+        "I hope I can always be the reason for your smile 💖",
+        "Your smile is more precious than all the roses in the world 🌹"
+      ];
+      
+      smileBtn.addEventListener('click', () => {
+        // Show random message
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        surpriseMessage.textContent = messages[randomIndex];
+        surpriseMessage.classList.add('show');
+        
+        // Change button text
+        smileBtn.innerHTML = "Click Again for More! 💝";
+        
+        // Play happy sound
+        const smileSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3');
+        smileSound.volume = 0.2;
+        smileSound.play();
+        
+        // Create heart explosion
+        createHeartExplosion();
+      });
+
+      // Create heart explosion effect
+      function createHeartExplosion() {
+        const container = document.getElementById('hearts-container');
+        const explosionCount = 15;
+        
+        for (let i = 0; i < explosionCount; i++) {
+          const heart = document.createElement('div');
+          heart.classList.add('heart');
+          heart.innerHTML = '❤';
+          
+          // Random properties
+          const left = 40 + Math.random() * 20;
+          const size = Math.random() * 25 + 15;
+          const duration = Math.random() * 3 + 2;
+          
+          heart.style.left = `${left}vw`;
+          heart.style.fontSize = `${size}px`;
+          heart.style.animationDelay = '0s';
+          heart.style.animationDuration = `${duration}s`;
+          heart.style.color = `hsl(${Math.random() * 60 + 320}, 100%, 65%)`;
+          
+          container.appendChild(heart);
+          
+          // Remove heart after animation
+          setTimeout(() => {
+            if (heart.parentNode) {
+              heart.remove();
+            }
+          }, duration * 1000);
+        }
+      }
+
+      // Music player functionality
+      const playBtn = document.getElementById('play-btn');
+      const bgMusic = document.getElementById('bg-music');
+      let isPlaying = false;
+
+      playBtn.addEventListener('click', () => {
+        if (isPlaying) {
+          bgMusic.pause();
+          playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        } else {
+          bgMusic.play().catch(e => {
+            console.log("Audio play failed, waiting for interaction:", e);
+            // If autoplay is blocked, show message
+            document.body.addEventListener('click', () => {
+              bgMusic.play();
+              playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+              isPlaying = true;
+            }, { once: true });
+          });
+          playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        }
+        isPlaying = !isPlaying;
+      });
+
+      // Scroll detection for section activation
+      window.addEventListener('scroll', () => {
+        if (!isHeroHidden) return;
+        
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
+        
+        // Find current section
+        sections.forEach((section, index) => {
+          const sectionTop = section.offsetTop;
+          const sectionBottom = sectionTop + section.offsetHeight;
+          
+          if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+            // Activate current section
+            sections.forEach(s => s.classList.remove('active'));
+            section.classList.add('active');
+            currentSection = index;
+          }
+        });
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (!isHeroHidden) return;
+        
+        if (e.key === 'ArrowDown' && currentSection < sections.length - 1) {
+          sections[currentSection + 1].scrollIntoView({ behavior: 'smooth' });
+          e.preventDefault();
+        } else if (e.key === 'ArrowUp' && currentSection > 0) {
+          sections[currentSection - 1].scrollIntoView({ behavior: 'smooth' });
+          e.preventDefault();
+        } else if (e.key === 'Home') {
+          showHero();
+          e.preventDefault();
+        } else if (e.key === ' ') {
+          // Spacebar toggles music
+          if (isPlaying) {
+            bgMusic.pause();
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+          } else {
+            bgMusic.play();
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+          }
+          isPlaying = !isPlaying;
+          e.preventDefault();
+        }
+      });
+
+      // Swipe support for mobile
+      let touchStartY = 0;
+      let touchEndY = 0;
+
+      document.addEventListener('touchstart', (e) => {
+        touchStartY = e.changedTouches[0].screenY;
+      });
+
+      document.addEventListener('touchend', (e) => {
+        if (!isHeroHidden) return;
+        
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      });
+
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartY - touchEndY;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+          if (diff > 0 && currentSection < sections.length - 1) {
+            // Swipe up - next section
+            sections[currentSection + 1].scrollIntoView({ behavior: 'smooth' });
+          } else if (diff < 0 && currentSection > 0) {
+            // Swipe down - previous section
+            sections[currentSection - 1].scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+
+      // Initialize
+      window.addEventListener('DOMContentLoaded', () => {
+        createPetals();
+        createHearts();
+        bgMusic.volume = 0.5;
+        
+        // Auto-play music after user interaction
+        document.body.addEventListener('click', () => {
+          if (!isPlaying) {
+            bgMusic.play().then(() => {
+              playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+              isPlaying = true;
+            }).catch(e => {
+              console.log("Autoplay not allowed without interaction");
+            });
+          }
+        }, { once: true });
+      });
+    </script>
+  </body>
+</html>
